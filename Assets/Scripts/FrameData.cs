@@ -5,16 +5,14 @@ using UnityEngine;
 public class FrameData : MonoBehaviour
 {
 
-    
+    [SerializeField] AudioClip animalAudio;
 
-
-   [SerializeField] GameObject canvasPrefab;
-   [SerializeField] GameObject canvasInstance;
+    AudioSource frameAS;
 
     // Start is called before the first frame update
     void Start()
     {
-        canvasInstance.SetActive(false);
+        frameAS = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,13 +23,6 @@ public class FrameData : MonoBehaviour
 
     public void StartInteraction()
     {
-        Debug.Log("Triggered");
-        canvasInstance.SetActive(true);
-    }
-
-    public void EndInteraction()
-    {
-        Debug.Log("End Triggered");
-        canvasInstance.SetActive(false);
+        frameAS.PlayOneShot(animalAudio);
     }
 }
